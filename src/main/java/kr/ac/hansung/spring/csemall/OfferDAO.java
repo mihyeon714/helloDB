@@ -2,14 +2,22 @@ package kr.ac.hansung.spring.csemall;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
+//이 에노테이션은 bean.xml에서 bean을 등록해주는 것이 아닌 
+//이 클래스를 바로 빈으로 등록해주는것
+//id는 활용할 필요가 있을때 작성한다
+//@Component("offerDAO")
+@Component
 public class OfferDAO {
 	// jdbcTemplate를 활용하자
 	private JdbcTemplate jdbcTemplateObject;
 	//private DataSource dataSource; //DI했으니 필요없엉
 
 	//세터를 통한 DI
+	@Autowired 
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplateObject=new JdbcTemplate(dataSource);
 	}
