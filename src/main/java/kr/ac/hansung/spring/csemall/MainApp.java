@@ -1,5 +1,7 @@
 package kr.ac.hansung.spring.csemall;
 
+import java.util.List;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MainApp {
@@ -13,6 +15,11 @@ public class MainApp {
 		System.out.println("The record count is " + offerDAO.getRowCount()); //레코드 수가 출력될것
 		
 		
+		List<Offer> offerList = offerDAO.getOffers();
+		
+		for(Offer offer: offerList){
+			System.out.println(offer);
+		}
 		context.close();
 	}
 
